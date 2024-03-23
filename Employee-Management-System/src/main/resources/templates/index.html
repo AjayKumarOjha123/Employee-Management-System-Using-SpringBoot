@@ -1,0 +1,131 @@
+
+<!-- Navbar -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    nav {
+      background-color: #333;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      display: inline-block;
+      padding: 20px;
+      text-decoration: none;
+      color: white;
+    }
+
+    nav ul li a:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+       <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+</body>
+</html>
+
+<!-- Navbar End -->
+
+<!-- Table  -->
+  <style>
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    label, input {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <h2>Employee List</h2>
+   <h1><a href="/addEmployee">Add New Employee</a></h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Salary</th>
+        <th>Action</th>
+      </tr>
+      <tr th:each="emp:${Employee}">
+      <td th:text="${emp.id}"></td>
+      <td th:text="${emp.name}"></td>
+      <td th:text="${emp.email}"></td>
+      <td th:text="${emp.phone}"></td>
+      <td th:text="${emp.salary}"></td>
+      <td>
+       <button><a th:href="@{/{id}/editEmployee(id=${emp.id})}">Edit</a></button>
+       <button><a th:href="@{/{id}/deleteEmployee(id=${emp.id})}">Delete</a></button>
+      
+      </td>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Employee data will be populated here -->
+    </tbody>
+  </table>
+  
+ <!--  End Table  -->
+
+
+</body>
+</html>
